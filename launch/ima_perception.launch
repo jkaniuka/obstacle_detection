@@ -1,0 +1,11 @@
+<launch>
+  <arg name="model_path" default="$(find ima_perception)/models"/>
+  <arg name="network_path" default="$(find ima_perception)/network/ima"/>
+
+  <node pkg="ima_perception" type="symbol_detector.py" name="symbol_detector" output="screen">
+    <param name="model_path" value="$(arg model_path)" />
+    <param name="network_path" value="$(arg network_path)" />
+    <param name="target_frame" value="odom" />
+    <remap from="points" to="/kinect/depth/points" />
+  </node>
+</launch>
